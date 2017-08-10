@@ -1,0 +1,155 @@
+    .directory-nav {
+      position: fixed;
+      right: 50px;
+      bottom: 40px;
+      padding: 12px 0 20px 32px;
+      display: none;
+      width: 20%;
+    }
+
+    .directory-nav li {
+      height: auto;
+      line-height: 34px;
+      position: relative;
+      border-radius: 2px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      background-color: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    }
+
+    .directory-nav li a {}
+
+    .directory-nav li {
+      list-style: none;
+      margin: 3px;
+      padding: 5px;
+      margin-left: 0px;
+      vertical-align: top;
+      cursor: pointer;
+    }
+
+    .directory-nav ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .directory-nav .l1 {}
+
+    .directory-nav .l2 {
+      text-indent: 0.6em;
+    }
+
+    .directory-nav .l1 a {
+      font-size: 16px;
+    }
+
+    .directory-nav .l2 a {
+      font-size: 14px;
+    }
+
+    .directory-nav,
+    .directory-nav a {
+      color: #666;
+    }
+
+    .directory-nav .cur,
+    .directory-nav .cur a {
+      color: red;
+    }
+
+    .directory-nav .line {
+      position: absolute;
+      left: 4px;
+      top: 5px;
+      bottom: 5px;
+      z-index: 1;
+      width: 2px;
+      margin: 6px 0;
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 3px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    }
+
+    .directory-nav .c-top,
+    .directory-nav .c-bottom {
+      position: absolute;
+      left: 0;
+      z-index: 2;
+      display: block;
+      width: 12px;
+      height: 12px;
+      font-size: 0;
+      line-height: 0;
+      border-radius: 2px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      background-color: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    }
+
+    .directory-nav .c-dot {
+      position: absolute;
+      left: -32px;
+      top: 50%;
+      z-index: 2;
+      margin-top: -5px;
+      display: block;
+      width: 10px;
+      height: 10px;
+      font-size: 0;
+      line-height: 0;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      background: rgba(255, 255, 255, 0.55);
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    }
+
+    .directory-nav .c-top {
+      top: 0
+    }
+
+    .directory-nav .c-bottom {
+      bottom: 0
+    }
+
+    .directory-nav .cur-tag {
+      position: absolute;
+      left: -1px;
+      z-index: 5;
+      margin-top: -6px;
+      display: block;
+      width: 19px;
+      height: 12px;
+      font-size: 0;
+      line-height: 0;
+      -webkit-transition: top .3s ease 0s;
+      transition: top .3s ease 0s;
+    }
+
+    .directory-nav .cur-tag:before {
+      content: '';
+      height: 0;
+      width: 0;
+      display: block;
+      border: 6px transparent solid;
+      border-right-width: 0;
+      border-left-color: rgba(255, 255, 255, 0.8);
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+
+    .directory-nav .cur-tag:after {
+      content: '';
+      height: 12px;
+      width: 13px;
+      display: block;
+      background: rgba(255, 255, 255, 0.8);
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }

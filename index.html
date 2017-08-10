@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        沪江课件播放器
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="css/youtube.css" type="text/css" rel="stylesheet" />
+    <link href="css/player.css" type="text/css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="./node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
+    <style type="text/css">
+    html,
+    body {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow: hidden;
+    }
+
+    body {
+        overflow: visible;
+        opacity: 1.0;
+    }
+
+    #close-btn {
+        width: 40px;
+        height: 30px;
+        margin-right: 10px;
+        float: right;
+        color: red;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="jp_container_1" class="jp-audio jp-player">
+            <div class="jp-type-playlist">
+                <div  id="title" style="-webkit-app-region: drag" class="jp-gui jp-title top-gui">
+                    <span id="text">沪江课件播放器</span>
+                    <div id="close-btn" style="-webkit-app-region: no-drag">
+                        <i class="fa fa-window-close" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="trim-space center-gui">
+                    <div class="rest-this-new reset-this background defaultscreen">
+                        <div id="jquery_jplayer_1" class="jp-jplayer">
+                        </div>
+                    </div>
+                </div>
+                <div class="jp-gui bottom-gui">
+                    <div class="jp-video-play">
+                        <a href="javascript:;" class="jp-video-play-icon" tabindex="1">播放</a>
+                    </div>
+                    <div class="jp-interface">
+                        <div class="jp-controls-holder">
+                            <ul class="jp-controls">
+                                <li>
+                                    <a href="javascript:;" class="file">打开课件(.xml) <input type="button" name="" id="xml"/></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-previous" tabindex="1" title="上一页">上一页</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-play" tabindex="1" title="播放">播放</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-pause" tabindex="1" title="暂停">暂停</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-next" tabindex="1" title="下一页">下一页</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-stop" tabindex="1" title="停止">停止</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-mute" tabindex="1" title="静音">静音</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-unmute" tabindex="1" title="取消静音">取消静音</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-volume-max" tabindex="1" title="最大音量">最大音量</a>
+                                </li>
+                            </ul>
+                            <div class="jp-volume-bar">
+                                <div class="jp-volume-bar-value"></div>
+                            </div>
+                            <ul class="jp-toggles">
+                                <li>
+                                    <a href="javascript:;" class="jp-full-screen" tabindex="1" title="全屏">全屏</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-restore-screen" tabindex="1" title="取消全屏">取消全屏</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-shuffle" tabindex="1" title="随机播放">随机播放</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="顺序播放">顺序播放</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-repeat" tabindex="1" title="循环">循环</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" class="jp-repeat-off" tabindex="1" title="取消循环">取消循环</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"><i></i></div>
+                            </div>
+                        </div>
+                        <div class="jp-page-number"></div>
+                        <!-- <div class="jp-current-time"></div> -->
+                        <!-- <div class="jp-duration"></div> -->
+                        <div class="jp-current-duration"></div>
+                        <!--<div class="jp-title"></div>-->
+                    </div>
+                </div>
+                <div class="jp-no-solution">
+                    <span>Update Required</span> To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" , language="javascript">
+window.jQuery = window.$ = require("jquery");
+require('malihu-custom-scrollbar-plugin')(window.$);
+require("./js/hjplayer.js");
+const decompress = require('decompress');
+const app = require('electron').remote;
+const dialog = app.dialog;
+
+const fs = require('fs');
+const path = require('path');
+const rimraf = require('rimraf');
+
+//<![CDATA[
+$(document).ready(function() {
+    localStorage.user = "";
+    var hjp = new HJPlayer({
+        zoom: 0.5,
+        isLocal: true,
+        draggable: false,
+        resizable: false
+    });
+    hjp.reset();
+    hjp.prepare();
+    $("#xml").on("click", function() {
+        dialog.showOpenDialog({
+            title: "请选择课件",
+            filters: [{
+                    name: '.hj 课件',
+                    extensions: ['hj']
+                },
+                {
+                    name: '所有文件',
+                    extensions: ['*']
+                }
+            ]
+        }, function(fileNames) {
+            // fileNames is an array that contains the selected file
+            if (fileNames === undefined) {
+                console.log("No file selected");
+                return;
+            } else {
+                var data_path = path.join(__dirname, "/data/");
+                if (fs.existsSync(data_path)) {
+                    rimraf.sync(data_path);
+                }
+                fs.mkdirSync(data_path);
+                decompress(fileNames[0], data_path, {
+                    strip: 1
+                }).then(file => {
+                    console.log("done");
+                    hjp.localLoad(path.join(__dirname, "/data/index.xml"));
+                });
+            }
+        });
+    });
+    var fillWindow = function() {
+        var window = app.getCurrentWindow();
+        var size = window.getSize();
+        var layout = hjp.layout;
+        var scale = {
+            x: size[0] / layout.rect.width,
+            y: size[1] / layout.rect.height
+        };
+        var origin = {
+            x: 0,
+            y: 0
+        };
+        hjp.scaleLayout(scale, origin, layout);
+    }
+    var window = app.getCurrentWindow();
+    window.on("resize", function() {
+        fillWindow();
+        //clearTimeout(t);
+        //var t = setTimeout(function(){
+        hjp.render();
+        //}, 1000);
+    });
+    window.emit("resize");
+
+    window.on("leave-html-full-screen", function() {
+        window.emit("resize");
+    });
+    window.on("leave-full-screen", function() {
+        window.emit("resize");
+    });
+
+    $("#min-btn").on("click", function(e) {
+        var window = app.getCurrentWindow();
+        window.minimize();
+    });
+
+    $("#max-btn").on("click", function(e) {
+        var window = app.getCurrentWindow();
+        if (!window.isMaximized()) {
+            window.maximize();
+        } else {
+            window.unmaximize();
+        }
+    });
+
+    $("#close-btn").on("click", function(e) {
+        var window = app.getCurrentWindow();
+        window.close();
+    });
+});
+//]]>
+</script>
+
+</html>
