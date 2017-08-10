@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        沪江日语新版0-N1名师班
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="css/youtube.css" type="text/css" rel="stylesheet" />
+    <link href="css/blur.css" type="text/css" rel="stylesheet" />
+    <link href="css/player.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" language="javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/hjplayer.js"></script>
+    <style type="text/css">
+    html,
+    body,
+    .glass_bg_fix,
+    .glass_bg {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow: hidden;
+    }
+
+    body {
+        overflow: visible;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="glass_bg_fix">
+        <div class="glass_bg">
+            <div id="player">
+                <div id="container">
+                    <div id="jp_container_1" class="jp-audio jp-player">
+                        <div class="jp-type-playlist">
+                            <div id="title" class="jp-gui jp-title top-gui"></div>
+                            <div class="trim-space center-gui">
+                                <div class="rest-this-new reset-this background defaultscreen">
+                                    <div id="jquery_jplayer_1" class="jp-jplayer">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jp-gui bottom-gui">
+                                <div class="jp-video-play">
+                                    <a href="javascript:;" class="jp-video-play-icon" tabindex="1">播放</a>
+                                </div>
+                                <div class="jp-interface">
+                                    <div class="jp-controls-holder">
+                                        <ul class="jp-controls">
+                                            <li>
+                                                <a href="javascript:;" class="file">打开课件(.xml) <input type="file" name="" id="xml"/></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-previous" tabindex="1" title="上一页">上一页</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-play" tabindex="1" title="播放">播放</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-pause" tabindex="1" title="暂停">暂停</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-next" tabindex="1" title="下一页">下一页</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-stop" tabindex="1" title="停止">停止</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-mute" tabindex="1" title="静音">静音</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-unmute" tabindex="1" title="取消静音">取消静音</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-volume-max" tabindex="1" title="最大音量">最大音量</a>
+                                            </li>
+                                        </ul>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value"></div>
+                                        </div>
+                                        <ul class="jp-toggles">
+                                            <li>
+                                                <a href="javascript:;" class="jp-full-screen" tabindex="1" title="全屏">全屏</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-restore-screen" tabindex="1" title="取消全屏">取消全屏</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-shuffle" tabindex="1" title="随机播放">随机播放</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="顺序播放">顺序播放</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-repeat" tabindex="1" title="循环">循环</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" class="jp-repeat-off" tabindex="1" title="取消循环">取消循环</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar">
+                                            <div class="jp-play-bar"><i></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="jp-page-number"></div>
+                                    <!-- <div class="jp-current-time"></div> -->
+                                    <!-- <div class="jp-duration"></div> -->
+                                    <div class="jp-current-duration"></div>
+                                    <!--<div class="jp-title"></div>-->
+                                </div>
+                            </div>
+                            <div class="jp-no-solution">
+                                <span>Update Required</span> To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rb"></div>
+                    <div id="rt"></div>
+                    <div id="r"></div>
+                    <div id="l"></div>
+                    <div id="t"></div>
+                    <div id="b"></div>
+                    <div id="lt"></div>
+                    <div id="lb"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+$(document).ready(function() {
+    localStorage.user = "";
+    var hjp = new HJPlayer({
+        zoom: 0.5,
+        isLocal: true,
+        draggable: true,
+        resizable: true
+    });
+    hjp.reset();
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+        $("#xml").on('change', function() {
+            var file = this.files[0];
+            if (file != null) {
+                hjp.reset();
+                hjp.localLoad(file);
+            }
+        });
+    } else {
+        alert('The File APIs are not fully supported in this browser.');
+    }
+});
+</script>
+
+</html>

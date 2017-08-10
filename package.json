@@ -1,0 +1,37 @@
+{
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.0.0"
+  },
+  "dependencies": {
+    "imports-loader": "^0.7.1",
+    "jplayer": "^2.9.2",
+    "jquery": "^3.2.1",
+    "jquery-mousewheel": "^3.1.13",
+    "xml2js": "^0.4.17"
+  },
+  "name": "hjplayer",
+  "description": "a player for hujiang japanese course",
+  "version": "1.0.0",
+  "main": "hjplayer.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhttjdr/hjplayer.git"
+  },
+  "keywords": [
+    "hujiang",
+    "player"
+  ],
+  "author": "lhttjdr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lhttjdr/hjplayer/issues"
+  },
+  "homepage": "https://github.com/lhttjdr/hjplayer#readme"
+}
