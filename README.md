@@ -18,24 +18,4 @@
 
     npm run build
 
-可以在`./dist`下生成适合各操作系统的不同版本程序，参见下节。
-
-## 版本说明
-
--  Mac OS X/IOS系统（均基于Darwin操作系统，一种Unix-like操作系统）下请使用hjplayer-darwin-x64。
-
--  Mac App Store（hjplayer-mas-x64）版，可以忽略。（如果一个软件想要发布到App Store，那么苹果公司要求软件必须通过App Store更新，而不能自己具备更新功能。否则审核不过。因此搞出一个特殊版本。）
-
--  32位Linux操作系统下请使用hjplayer-linux-ia32。
-
--  64位Linux操作系统下请使用hjplayer-linux-x64。
-
--  ARM v7 处理器的（little endian）Linux系统请使用hjplayer-linux-armv7l。课件目录位于hjplayer-linux-armv7l/resources/app/data
-
-（ARMv7是32位处理器，常见于手机等手持设备。从armv8起是64位处理器。）
-
--  32位Windows操作系统，请使用hjplayer-win32-ia32。
-
--  64位Windows操作系统，请使用hjplayer-win32-x64。
-
-其它处理器或操作系统，暂时没有相应版本。
+可以在`./dist`下生成适合各操作系统的不同版本程序。
