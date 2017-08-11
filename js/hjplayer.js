@@ -794,16 +794,17 @@ HJPlayer.prototype = {
         	}
         });*/
     },
-    localLoad: function(file) {
+    localLoad: function(dataPath) {
         var _this = this;
         var parser = new xml2js.Parser({ explicitArray: false }); // compatable with xml2json
         var fs = require("fs");
-        fs.readFile(file, function(err, data) {
+        var path =require("path");
+        _this.settings.dataPath=dataPath;
+        fs.readFile(path.join(dataPath,_this.settings.slidesData), function(err, data) {
             if (!err && data) {
                 parser.parseString(data, function(err, result) {
                     if (!err && result) {
                         console.log(result);
-                        _this.settings.dataPath = "data/";
                         _this.prepare();
                         _this.parseData(result);
                     } else {

@@ -22,9 +22,10 @@ function createWindow () {
     minHeight:400,
     frame: false,
     resizable:true,
+    movable:true,
     center:true,
     autoHideMenuBar:true,
-    icon: 'icon.png',
+    icon: 'assert/win/hjplayer.ico',
     webPreferences:{
       textAreasAreResizable:false,
       overlayScrollbars:true
@@ -47,7 +48,6 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
-    rimraf.sync(path.join(__dirname,"/data/"));
   })
 }
 

@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . --platform=darwin,win32,linux --arch=ia32,x64,armv7l --out=./dist"
+    "build": "node build.js"
   },
   "repository": "https://github.com/lhttjdr/hjplayer",
   "keywords": [
@@ -17,10 +17,12 @@
   "author": "lhttjdr",
   "license": "MIT",
   "devDependencies": {
+    "asar": "^0.13.0",
     "devtron": "^1.4.0",
-    "electron": "1.4.13",
+    "electron": "1.6.11",
     "electron-debug": "^1.4.0",
-    "electron-packager": "8.7.2"
+    "electron-packager": "8.7.2",
+    "electron-prebuilt": "^1.4.13"
   },
   "dependencies": {
     "decompress": "^4.2.0",

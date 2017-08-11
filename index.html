@@ -137,8 +137,11 @@ window.jQuery = window.$ = require("jquery");
 require('malihu-custom-scrollbar-plugin')(window.$);
 require("./js/hjplayer.js");
 const decompress = require('decompress');
-const app = require('electron').remote;
-const dialog = app.dialog;
+const remote = require('electron').remote;
+const dialog = remote.dialog;
+const app=remote.app;
+
+const data=app.getPath('userData');
 
 const fs = require('fs');
 const path = require('path');
@@ -173,7 +176,7 @@ $(document).ready(function() {
                 console.log("No file selected");
                 return;
             } else {
-                var data_path = path.join(__dirname, "/data/");
+                var data_path = path.join(data, "/hjplayer/");
                 if (fs.existsSync(data_path)) {
                     rimraf.sync(data_path);
                 }
@@ -182,13 +185,13 @@ $(document).ready(function() {
                     strip: 1
                 }).then(file => {
                     console.log("done");
-                    hjp.localLoad(path.join(__dirname, "/data/index.xml"));
+                    hjp.localLoad(data_path);
                 });
             }
         });
     });
     var fillWindow = function() {
-        var window = app.getCurrentWindow();
+        var window = remote.getCurrentWindow();
         var size = window.getSize();
         var layout = hjp.layout;
         var scale = {
@@ -201,7 +204,7 @@ $(document).ready(function() {
         };
         hjp.scaleLayout(scale, origin, layout);
     }
-    var window = app.getCurrentWindow();
+    var window = remote.getCurrentWindow();
     window.on("resize", function() {
         fillWindow();
         //clearTimeout(t);
@@ -219,12 +222,12 @@ $(document).ready(function() {
     });
 
     $("#min-btn").on("click", function(e) {
-        var window = app.getCurrentWindow();
+        var window = remote.getCurrentWindow();
         window.minimize();
     });
 
     $("#max-btn").on("click", function(e) {
-        var window = app.getCurrentWindow();
+        var window = remote.getCurrentWindow();
         if (!window.isMaximized()) {
             window.maximize();
         } else {
@@ -233,7 +236,7 @@ $(document).ready(function() {
     });
 
     $("#close-btn").on("click", function(e) {
-        var window = app.getCurrentWindow();
+        var window = remote.getCurrentWindow();
         window.close();
     });
 });
