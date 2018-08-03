@@ -7,7 +7,7 @@ packager({
   name: config.name,
   platform: 'win32',
   arch: 'all',
-  electronVersion: '1.4.13',
+  electronVersion: '2.0.6',
   icon: './assert/win/jplayer.ico',
 
   overwrite: true,
